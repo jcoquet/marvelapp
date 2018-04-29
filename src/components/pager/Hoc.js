@@ -1,26 +1,25 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { paginate, fetchCharacters } from '../../actions'
+import { paginate, fetchCharacters } from '../../actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
     return {
-        numPage: ownProps.match.params.num,
         characters: Object.values(state.characters)
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        paginate: numPage => {
-            dispatch(paginate(numPage));
+        handleClick: direction => {
+            dispatch(paginate(direction));
             dispatch(fetchCharacters());
         }
     }
 }
 
-const CharacterList = connect(
+const Pager = connect(
     mapStateToProps,
     mapDispatchToProps
 )(View)
 
-export default CharacterList
+export default Pager

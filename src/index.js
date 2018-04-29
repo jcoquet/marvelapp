@@ -7,7 +7,6 @@ import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux';
 import marvelApp from './reducers';
 import Root from './components/Root';
-import { fetchCharacters } from './actions';
 
 const loggerMiddleware = createLogger()
 
@@ -18,8 +17,6 @@ const store = createStore(
         loggerMiddleware
     )
 );
-
-store.dispatch(fetchCharacters(100));
 
 render(
     <Root store={store} />,

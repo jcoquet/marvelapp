@@ -1,24 +1,25 @@
-import React from 'react'
-//import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import Character from '../item/Hoc'
+import Pager from '../pager/Hoc'
 
-const View = ({ characters, onCharacterClick }) => (
-    <ul>
-        {characters.length > 0 && characters.map((character, index) => (
-            <Character key={index} character={character} onClick={() => onCharacterClick(index)} />
-        ))}
-    </ul>
-)
+class View extends Component {
 
-// CharacterList.propTypes = {
-//   todos: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       completed: PropTypes.bool.isRequired,
-//       text: PropTypes.string.isRequired
-//     }).isRequired
-//   ).isRequired,
-//   onTodoClick: PropTypes.func.isRequired
-// }
+    componentDidMount() {
+        this.props.paginate(this.props.numPage);
+    }
+
+    render() {
+        return (
+            <div>
+                <Pager />
+                <ul>
+                    {this.props.characters.length > 0 && this.props.characters.map((character, index) => (
+                        <Character key={index} character={character} />
+                    ))}
+                </ul>
+            </div>
+        )
+    }
+}
 
 export default View

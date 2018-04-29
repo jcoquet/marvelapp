@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import CharacterList from './list/Hoc';
+import { Link } from "react-router-dom";
 
 class App extends Component {
     render() {
         return (
             <div>
-                <CharacterList />
+                <Link to='/page/1'>Home</Link>
+                {this.props.children && React.cloneElement(this.props.children)}
             </div>
         );
     }

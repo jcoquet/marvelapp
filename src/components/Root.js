@@ -12,7 +12,8 @@ const Root = ({ store }) => (
             <App>
                 <Switch>
                     <Route exact path="/" component={CharacterList} />
-                    <Route path="/:id" component={CharacterDetail} />
+                    <Route exact path="/:id" component={CharacterDetail} />
+                    <Route path="/page/:num" component={CharacterList} />
                 </Switch>
             </App>
         </Router>
