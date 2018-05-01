@@ -1,5 +1,8 @@
 import * as c from './constants';
 import pagination from './pagination';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 function handleErrors(response) {
     if (!response.ok) {
@@ -27,12 +30,12 @@ export function paginate(direction) {
     if (!direction) direction = 1;
 
     switch (direction) {
-        case 'next':
+        case c.PAGINATION_NEXT:
             pagination.offset = pagination.limit * (pagination.numPage + 1);
             pagination.numPage = pagination.numPage + 1;
             break;
 
-        case 'prev':
+        case c.PAGINATION_PREV:
             pagination.offset = pagination.limit * (pagination.numPage - 1);
             pagination.numPage = pagination.numPage - 1;
             break;
@@ -55,7 +58,12 @@ export function fetchCharacters() {
             .then(response => response.json())
             .then(json => {
                 if (json.code === 200) {
-                    dispatch(getCharacters(json))
+                    dispatch(getCharacters(json));
+                    if(pagination.numPage > 0) {
+                        history.push(`/page/${pagination.numPage + 1}`);
+                    } else if(pagination.numPage === 0) {
+                        history.replace('/');
+                    }
                 } else {
                     throw Error(json.status);
                 }

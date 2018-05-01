@@ -1,9 +1,10 @@
 import React from 'react'
+import { PAGINATION_PREV, PAGINATION_NEXT } from '../../constants'
 
 const View = ({ prev, next, handleClick }) => (
     <div>
-        <button onClick={() => handleClick('prev')}>prev</button>
-        <button onClick={() => handleClick('next')}>next</button>
+        {prev && <button onClick={() => handleClick(PAGINATION_PREV)}>prev</button>}
+        {next && <button onClick={() => handleClick(PAGINATION_NEXT)}>next</button>}
     </div>
 )
 

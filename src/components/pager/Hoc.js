@@ -4,7 +4,8 @@ import { paginate, fetchCharacters } from '../../actions';
 
 const mapStateToProps = state => {
     return {
-        characters: Object.values(state.characters)
+        prev: state.ui.prevButton,
+        next: state.ui.nextButton
     }
 }
 

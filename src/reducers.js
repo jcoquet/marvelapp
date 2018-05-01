@@ -26,10 +26,14 @@ function character(state = null, action) {
     }
 }
 
-function ui(state = {}, action) {
+export function ui(state = { nextButton: false, prevButton: false }, action) {
     switch (action.type) {
         case MESSAGE:
             return Object.assign({}, state, action.text)
+        case GET_CHARACTERS:
+            let prevButton = action.json.data.offset > 0;
+            let nextButton = action.json.data.offset < action.json.data.total - action.json.data.limit;
+            return Object.assign({}, state, { prevButton, nextButton });
         default:
             return state
     }

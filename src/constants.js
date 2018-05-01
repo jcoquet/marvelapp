@@ -4,3 +4,5 @@ export const CHARACTERS = 'characters';
 export const MAX_COMICS_DISPLAYED = '3';
 export const PAGINATION_OFFSET = 0;
 export const PAGINATION_LIMIT = 20;
+export const PAGINATION_NEXT = 'next';
+export const PAGINATION_PREV = 'prev';
