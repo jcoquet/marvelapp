@@ -3,8 +3,11 @@ import {
     GET_CHARACTERS,
     GET_CHARACTER,
     MESSAGE,
-    UNSET_HERO
+    UNSET_HERO,
+    BOOKMARK_ADD,
+    BOOKMARK_REMOVE
 } from './actions'
+import filter from 'lodash/filter'
 
 function characters(state = {}, action) {
     switch (action.type) {
@@ -39,10 +42,34 @@ export function ui(state = { nextButton: false, prevButton: false }, action) {
     }
 }
 
+// Try to get bookmarked heroes from session storage
+let initialBookmarks = []
+try {
+    initialBookmarks = sessionStorage.getItem('bookmarks')? JSON.parse(sessionStorage.getItem('bookmarks')) : [];
+} catch(e) {
+    initialBookmarks = [];
+}
+
+export function bookmarks(state = initialBookmarks, action) {
+    switch (action.type) {
+        case BOOKMARK_ADD:
+            let addedState = [...state, action.hero]; // add the hero to the state
+            sessionStorage.setItem('bookmarks', JSON.stringify(addedState)); // update session storage
+            return addedState;
+        case BOOKMARK_REMOVE:
+            let removedState = filter(state, function (o) { return o.id !== action.id; }); // remove by id, thanks lo :)
+            sessionStorage.setItem('bookmarks', JSON.stringify(removedState)); // update session storage
+            return removedState;
+        default:
+            return state;
+    }
+}
+
 const marvelApp = combineReducers({
     characters,
     character,
-    ui
+    ui,
+    bookmarks
 })
 
 export default marvelApp

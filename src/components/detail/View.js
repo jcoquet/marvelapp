@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import { MAX_COMICS_DISPLAYED } from '../../constants';
+import Switch from '../bookmarks/Switch';
+import { withRouter } from 'react-router';
 
 class View extends Component {
-
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     character: {}
-  //   }
-
-  // }
 
   componentWillUnmount() {
     this.props.unsetCurrentCharacter();
@@ -36,6 +29,7 @@ class View extends Component {
 
     return (
       <div>
+        <a onClick={this.props.history.goBack}>Back</a>
         <h1>{character.name}</h1>
         <p>{character.description}</p>
         <img src={`${character.thumbnail.path}/standard_medium.${character.thumbnail.extension}`}
@@ -44,6 +38,7 @@ class View extends Component {
         <ul>
           {comicsItem}
         </ul>
+        <Switch character={character} />
       </div>
     )
 
@@ -51,4 +46,4 @@ class View extends Component {
 
 }
 
-export default View
+export default withRouter(View)

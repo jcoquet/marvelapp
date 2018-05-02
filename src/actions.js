@@ -20,6 +20,8 @@ export const GET_CHARACTER = 'GET_CHARACTER';
 export const MESSAGE = 'MESSAGE';
 export const UNSET_HERO = 'UNSET_HERO';
 export const PAGINATION = "PAGINATION";
+export const BOOKMARK_ADD = "BOOKMARK_ADD";
+export const BOOKMARK_REMOVE = "BOOKMARK_REMOVE";
 
 /*
  * action creators
@@ -102,4 +104,18 @@ export function message(text) {
 
 export function unsetCurrentCharacter() {
     return { type: UNSET_HERO }
+}
+
+export function addBookmark(hero) {
+    return {
+        type: BOOKMARK_ADD,
+        hero
+    }
+}
+
+export function removeBookmark(id) {
+    return {
+        type: BOOKMARK_REMOVE,
+        id
+    }
 }

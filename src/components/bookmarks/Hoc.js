@@ -3,12 +3,12 @@ import View from './View'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        character: ownProps.character
+        characters: Object.values(state.bookmarks)
     }
 }
 
-const Character = connect(
+const Bookmarks = connect(
     mapStateToProps
 )(View)
 
-export default Character
+export default Bookmarks
