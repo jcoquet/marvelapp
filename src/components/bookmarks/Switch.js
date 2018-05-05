@@ -6,7 +6,7 @@ import { addBookmark, removeBookmark } from '../../actions'
 import findIndex from 'lodash/findIndex'
 import { MAX_BOOKMARKS } from '../../constants'
 
-const View = ({ bookmark, handleBookmark, canBookmark, character }) => (
+export const View = ({ bookmark, handleBookmark, canBookmark, character }) => (
   <div>
     { canBookmark && !bookmark && <span onClick={() => handleBookmark(character, bookmark)}>bookmark this</span> }
     { bookmark && <span onClick={() => handleBookmark(character, bookmark)}>remove from bookmarks</span> }

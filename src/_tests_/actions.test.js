@@ -43,6 +43,27 @@ describe('actions', () => {
         }
         expect(actions.message(text)).toEqual(expectedAction)
     })
+
+    it('should create an action to add a bookmark', () => {
+        const hero = {
+            id: 1,
+            name: 'Hey Man'
+        };
+        const expectedAction = {
+            type: actions.BOOKMARK_ADD,
+            hero
+        }
+        expect(actions.addBookmark(hero)).toEqual(expectedAction)
+    })
+
+    it('should create an action to remove a bookmark', () => {
+        const hero = 23;
+        const expectedAction = {
+            type: actions.BOOKMARK_REMOVE,
+            id: hero
+        }
+        expect(actions.removeBookmark(hero)).toEqual(expectedAction)
+    })
 })
 
 describe('async actions', () => {

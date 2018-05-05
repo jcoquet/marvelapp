@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 
-const View = ({ count }) => (
+export const View = ({ count }) => (
     <Link to='/bookmarks'>Bookmarks{count > 0 && ` (${count})`}</Link>
 )
 
