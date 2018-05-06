@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 
 export const View = ({ count }) => (
-    <Link to='/bookmarks'>Bookmarks{count > 0 && ` (${count})`}</Link>
+    <Link className="bookmarks-link" to='/bookmarks'><span className="label">Bookmarks</span>{count > 0 && <span className="count">{count}</span>}</Link>
 )
 
 const mapStateToProps = (state) => {

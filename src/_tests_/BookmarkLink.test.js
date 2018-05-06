@@ -15,6 +15,6 @@ describe('<BookmarkLink />', () => {
         expect(wrapper.find('a').length).toBe(1);
         expect(wrapper.find('a').text()).toBe('Bookmarks');
         wrapper =  mountWithRouter(<BookmarkLink  count='1' />);
-        expect(wrapper.find('a').text()).toBe('Bookmarks (1)');
+        expect(wrapper.find('a').text()).toBe('Bookmarks1');
     });
 })

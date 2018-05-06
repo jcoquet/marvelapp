@@ -10,9 +10,9 @@ class View extends Component {
 
     render() {
         return (
-            <div>
+            <div className="wrap">
                 <Pager />
-                <ul>
+                <ul className="heroes-list">
                     {this.props.characters.length > 0 && this.props.characters.map((character, index) => (
                         <Character key={index} character={character} />
                     ))}

@@ -18,7 +18,7 @@ class View extends Component {
     const { character } = this.props;
 
     if (character === null) return (
-      <p>Loading...</p>
+      <p className="wrap">Loading...</p>
     )
 
     const comics = character.comics.items.slice(0, MAX_COMICS_DISPLAYED);
@@ -28,17 +28,21 @@ class View extends Component {
     )
 
     return (
-      <div>
-        <a onClick={this.props.history.goBack}>Back</a>
-        <h1>{character.name}</h1>
-        <p>{character.description}</p>
-        <img src={`${character.thumbnail.path}/standard_medium.${character.thumbnail.extension}`}
+      <div className="wrap single">
+        <a className="button back-button" onClick={this.props.history.goBack}>Back</a>
+        <h1>{character.name}<Switch character={character} /></h1>
+        <img src={`${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`}
           alt={character.name} />
-        <span>Appears in{character.comics.available} commics</span>
-        <ul>
-          {comicsItem}
-        </ul>
-        <Switch character={character} />
+        <div className="col">
+          <p>{character.description}</p>
+          {character.comics.available > 0 &&
+            <div>
+              Appears in {character.comics.available} commics :
+              <ul>
+                {comicsItem}
+              </ul>
+            </div>}
+        </div>
       </div>
     )
 
