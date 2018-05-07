@@ -17,8 +17,13 @@ class View extends Component {
 
     const { character } = this.props;
 
-    if (character === null) return (
-      <p className="wrap">Loading...</p>
+    // Nothing to render if the character is null
+    // The loading state is shown by the toaster
+    if (character === null) return null;
+
+    // The requested character id doesn't exists
+    if (character === false) return (
+      <p className="wrap">Oops, nothing to show.<br />sorry :)<br />Please try another page.</p>
     )
 
     const comics = character.comics.items.slice(0, MAX_COMICS_DISPLAYED);

@@ -101,11 +101,11 @@ export function fetchCharacter(id) {
                 if (json.code === 200) {
                     dispatch(getCharacter(json))
                 } else {
-                    throw Error(json.status);
+                    throw Error(json.status); // 401 and other error status
                 }
             })
-            .catch(error => dispatch(message(error.message)))
-            .then(() => dispatch(fetching()));
+            .catch(error => dispatch(getCharacter({data: {results: [false]}}))) // The requested character id doesn't exists
+            .then(() => dispatch(fetching())); //always hide the loader
     }
 }
 

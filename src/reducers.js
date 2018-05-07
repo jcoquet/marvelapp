@@ -22,6 +22,7 @@ function characters(state = {}, action) {
 function character(state = null, action) {
     switch (action.type) {
         case GET_CHARACTER:
+            if(!action.json.data.results[0]) return false; // The requested character id doesn't exists
             return Object.assign({}, state, action.json.data.results[0])
         case UNSET_HERO:
             return null
