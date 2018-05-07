@@ -4,7 +4,7 @@ const pagination = {
     numPage: PAGINATION_OFFSET * PAGINATION_LIMIT,
     offset: PAGINATION_OFFSET,
     limit: PAGINATION_LIMIT,
-    total: 0,
+    total: 9999,
     count: 0
 }
 
