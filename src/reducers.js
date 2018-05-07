@@ -2,10 +2,10 @@ import { combineReducers } from 'redux'
 import {
     GET_CHARACTERS,
     GET_CHARACTER,
-    MESSAGE,
     UNSET_HERO,
     BOOKMARK_ADD,
-    BOOKMARK_REMOVE
+    BOOKMARK_REMOVE,
+    FETCHING
 } from './actions'
 import filter from 'lodash/filter'
 
@@ -29,14 +29,14 @@ function character(state = null, action) {
     }
 }
 
-export function ui(state = { nextButton: false, prevButton: false }, action) {
+export function ui(state = { nextButton: false, prevButton: false, isFetching: false }, action) {
     switch (action.type) {
-        case MESSAGE:
-            return Object.assign({}, state, action.text)
         case GET_CHARACTERS:
             let prevButton = action.json.data.offset > 0;
             let nextButton = action.json.data.offset < action.json.data.total - action.json.data.limit;
             return Object.assign({}, state, { prevButton, nextButton });
+        case FETCHING:
+            return Object.assign({}, state, { isFetching : action.isFetching });
         default:
             return state
     }

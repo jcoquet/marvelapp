@@ -203,3 +203,19 @@ header {
     left: 215px;
   }
 }
+
+.loader {
+  position: fixed;
+  bottom: -100px;
+  color: white;
+  left: 50%;
+  transform: translateX(-50%) skew(-15deg);
+  background-color: rgba(0, 0, 0, .8);
+  transition: bottom .4s .5s;
+  padding: 20px 40px;
+  text-transform: uppercase;
+}
+
+.loader.true {
+  bottom: 0;
+}
