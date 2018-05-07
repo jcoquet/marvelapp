@@ -4,7 +4,7 @@ import { GET_CHARACTERS, BOOKMARK_ADD, BOOKMARK_REMOVE } from '../actions';
 describe('ui reducer', () => {
     it('should return the initial state', () => {
         expect(ui(undefined, {})).toEqual(
-            { "nextButton": false, "prevButton": false }
+            { "nextButton": false, "prevButton": false, "isFetching": false }
         )
     })
     it('should show only the next button', () => {
@@ -18,7 +18,7 @@ describe('ui reducer', () => {
                 }
             }
         })).toEqual(
-            { "nextButton": true, "prevButton": false }
+            { "nextButton": true, "prevButton": false, "isFetching": false }
         )
     })
     it('should show only the prev button', () => {
@@ -32,7 +32,7 @@ describe('ui reducer', () => {
                 }
             }
         })).toEqual(
-            { "nextButton": false, "prevButton": true }
+            { "nextButton": false, "prevButton": true, "isFetching": false }
         )
     })
     it('should show both', () => {
@@ -46,7 +46,7 @@ describe('ui reducer', () => {
                 }
             }
         })).toEqual(
-            { "nextButton": true, "prevButton": true }
+            { "nextButton": true, "prevButton": true, "isFetching": false }
         )
     })
 })
